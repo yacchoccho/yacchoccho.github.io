@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LLMによって生成されたやっちょ工学部のホームページ</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans+JP&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Inter", "Noto Sans JP", sans-serif;
+      background: #0f0f0f;
+      color: #eaeaea;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: #0f0f0f;
+      z-index: 10;
+    }
+
+    .logo {
+      font-weight: bold;
+    }
+
+    .hamburger {
+      font-size: 1.6rem;
+      background: none;
+      border: none;
+      color: #eaeaea;
+      cursor: pointer;
+    }
+
+    nav {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100%;
+      background: rgba(15,15,15,0.95);
+      transition: right 0.3s ease;
+      padding-top: 5rem;
+      z-index: 9;
+    }
+
+    nav.open {
+      right: 0;
+    }
+
+    nav ul {
+      list-style: none;
+    }
+
+    nav li {
+      margin: 1.5rem;
+    }
+
+    nav a {
+      color: #eaeaea;
+      text-decoration: none;
+      font-size: 1.2rem;
+    }
+
+    main {
+      padding: 6rem 2rem 2rem;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section {
+      display: none;
+    }
+
+    section.active {
+      display: block;
+    }
+
+    h1 {
+      margin-bottom: 1rem;
+    }
+
+    .subtitle {
+      color: #aaa;
+      margin-bottom: 2rem;
+    }
+
+    .cards {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .card {
+      display: block;
+      padding: 1rem;
+      background: #1a1a1a;
+      border-radius: 8px;
+      color: #eaeaea;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .card:hover {
+      background: #4da6ff;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">やっちょ工学部</div>
+  <button class="hamburger" id="hamburger">☰</button>
+</header>
+
+<nav id="nav">
+  <ul>
+    <li><a href="#" data-target="home">HOME</a></li>
+    <li><a href="#" data-target="links">LINKS</a></li>
+    <li><a href="#" data-target="contact">CONTACT</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- HOME -->
+  <section id="home" class="active">
+    <h1>やっちょ工学部</h1>
+    <p class="subtitle">Personal site / Engineering / Hobby</p>
+    <p>
+      プログラミングとイラストが好き。<br>
+      ソフトウェアトークが好き。<br>
+      組み込みエンジニア志望。<br>
+      このウェブサイトはChatGPTによって生成されました。
+    </p>
+  </section>
+
+<!-- LINKS -->
+<section id="links">
+  <h1>Links</h1>
+  <div class="cards">
+    <a class="card" href="https://github.com/yacchoccho" target="_blank">
+      GitHub
+    </a>
+
+    <a class="card" href="https://www.youtube.com/@%E3%82%84%E3%81%A3%E3%81%A1%E3%82%87%E5%B7%A5%E5%AD%A6%E9%83%A8" target="_blank">
+      YouTube
+    </a>
+
+    <a class="card" href="https://www.nicovideo.jp/user/140831939" target="_blank">
+      Niconico
+    </a>
+
+    <a class="card" href="https://yacchoccho.github.io/blog/blog_index.html" target="_blank">
+      Blog
+    </a>
+
+    <a class="card" href="https://x.com/Yacchoccho" target="_blank">
+      X (Twitter)
+    </a>
+  </div>
+</section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <h1>Contact</h1>
+    <p>You can contact me here:</p>
+    <br>
+    <a class="card" href="https://x.com/Yacchoccho" target="_blank">
+      X (formerly Twitter)
+    </a>
+  </section>
+</main>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const nav = document.getElementById("nav");
+  const links = nav.querySelectorAll("a");
+  const sections = document.querySelectorAll("section");
+
+  hamburger.addEventListener("click", () => {
+    nav.classList.toggle("open");
+  });
+
+  links.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const target = link.dataset.target;
+
+      sections.forEach(sec => sec.classList.remove("active"));
+      document.getElementById(target).classList.add("active");
+
+      nav.classList.remove("open");
+    });
+  });
+</script>
+
+</body>
+</html>
