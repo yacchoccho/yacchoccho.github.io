@@ -202,7 +202,7 @@ function handleHeartRateMeasurement(event) {
   setMetric(elements.minRate, state.minRate);
   setMetric(elements.maxRate, state.maxRate);
   setStatus("計測中", "connected");
-  setMessage("BLE通知で心拍数をリアルタイム更新中です。");
+  setMessage("Bluetooth Low Energy通知で心拍数をリアルタイム更新中です。");
   toggleGraphEmptyState(false);
   scheduleRender();
 }
